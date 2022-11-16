@@ -1,14 +1,21 @@
-print("НАЙДЕМ ПАЛИНДРОМ?")
-print("Чтобы завершить, введите \"конец\"\n")
-while True:
-    text = input("Введите ваше слово: ").lower()
-    if text.isalpha():
-        if text == text[::-1] and text != "":
-            print("Поздравляем, это палиндром!")
-        else:
-            if text == "конец":
-                break
-            print("Упс, это не палиндром")
-    else:
-        print("Ошибка, введите одно слово, без цифр и пробелов")
-print("Спасибо за участие в программе")
+print("ПОИСК ПАЛИНДРОМОВ В ТЕКСТЕ\n")
+
+text = input("Введите слово или текст: ")
+for i in text:
+    if i.isdigit():
+        text = text.replace(i, "")
+for i in [".", ",", "!", "?", ":", ";", ")", "(", "\"", "\'", "-", "«", "»", "– ", "\n", "\r", "  "]:
+    if i in text:
+        text = text.replace(i, "")
+
+text = text.lower()
+text = text.split(" ")
+
+my_count = 0
+for i in text:
+    if i == i[::-1] and i !="" and len(i) != 1:
+        print("Палиндром: ", i)
+        my_count += 1
+        if my_count == 0:
+            print("В вашем тексте нет слов-палиндромов")
+print("Количество найденных палиндромов: ", my_count)
