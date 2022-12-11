@@ -11,7 +11,7 @@ my_list_source = {}
 
 def log_analiser():
     """
-    Получает лог-файл, указанный пользователем, 
+    Получает лог-файл, указанный пользователем,
     находит в нем все уникальные ip, источники запросов, их количество
     и выводит в упорядоченном виде.
     """
@@ -42,10 +42,12 @@ def log_analiser():
     text_info.insert(1.0, f"Общее количество запросов: {str(counter)}")
 
     for i in my_list_sort_ip:
-        text_ip.insert(1.0, f'{i}\n')
+        (ip_in_list, count_ip) = i
+        text_ip.insert(1.0, f'{ip_in_list} - {count_ip}\n')
 
     for i in my_list_sort_source:
-        text_source.insert(1.0, f'{i}\n\n')
+        (source_in_list, source_count) = i
+        text_source.insert(1.0, f'{source_in_list} - {source_count}\n\n')
 
 
 def clearTextInput():
