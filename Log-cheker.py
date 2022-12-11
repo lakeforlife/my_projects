@@ -11,7 +11,6 @@ my_list_source = {}
 
 def log_analiser():
     counter = 0
-
     global my_list_ip
     filename = fd.askopenfilename()
 
@@ -21,7 +20,6 @@ def log_analiser():
             ip = Line.split(" ")[0]
             source = Line.split('"')[-2]
             counter += 1
-
 
             if ip not in my_list_ip:
                 my_list_ip[ip] = 1
@@ -35,18 +33,13 @@ def log_analiser():
 
     my_list_sort_ip = sorted(my_list_ip.items(), key=lambda x: x[1])
     my_list_sort_source = sorted(my_list_source.items(), key=lambda x: x[1])
-
-
-    text_info.insert(1.0, str(counter))
-    text_info.insert(1.0, "Общее количество запросов: ")
+    text_info.insert(1.0, f"Общее количество запросов: {str(counter)}")
 
     for i in my_list_sort_ip:
-        text_ip.insert(1.0, '\n')
-        text_ip.insert(1.0, i)
+        text_ip.insert(1.0, f'{i}\n')
 
     for i in my_list_sort_source:
-        text_source.insert(1.0, '\n\n')
-        text_source.insert(1.0, i)
+        text_source.insert(1.0, f'{i}\n\n')
 
 
 def clearTextInput():
