@@ -10,7 +10,13 @@ my_list_source = {}
 
 
 def log_analiser():
+    """
+    Получает лог-файл, указанный пользователем, 
+    находит в нем все уникальные ip, источники запросов, их количество
+    и выводит в упорядоченном виде.
+    """
     counter = 0
+
     global my_list_ip
     filename = fd.askopenfilename()
 
