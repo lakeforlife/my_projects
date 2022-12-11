@@ -11,14 +11,17 @@ my_list_source = {}
 
 def log_analiser():
     """
-    Получает лог-файл, указанный пользователем,
+    Очищает все поля программы. Получает лог-файл, указанный пользователем,
     находит в нем все уникальные ip, источники запросов, их количество
     и выводит в упорядоченном виде.
     """
     counter = 0
-
     global my_list_ip
     filename = fd.askopenfilename()
+
+    text_ip.delete("1.0", "end")
+    text_source.delete("1.0", "end")
+    text_info.delete("1.0", "end")
 
     with open(filename, "r") as f:
 
@@ -50,25 +53,16 @@ def log_analiser():
         text_source.insert(1.0, f'{source_in_list} - {source_count}\n\n')
 
 
-def clearTextInput():
-    text_ip.delete("1.0", "end")
-    text_source.delete("1.0", "end")
-    text_info.delete("1.0", "end")
-
-
 block_1 = tk.Label(win, text='Выберите файл для начала анализа.\n Данная программа покажет список ip, а также список источников запросов.', pady=20)
 but_1 = tk.Button(win, text="Открыть log-файл", command=log_analiser)
 text_info = tk.Text(win, wrap='word', height=1, width=100, padx=20)
 text_ip = tk.Text(win, wrap='word', height=12, width=100, padx=20)
 text_source = tk.Text(win, wrap='word', height=12, width=100, padx=20)
-btnRead = tk.Button(win, height=1, width=10, text="Очистить", command=clearTextInput)
-
 
 block_1.pack()
 but_1.pack()
 text_info.pack()
 text_ip.pack()
 text_source.pack()
-btnRead.pack()
 
 win.mainloop()
